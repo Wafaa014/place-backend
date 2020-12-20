@@ -7,9 +7,7 @@ module.exports = app => {
     var router = require("express").Router();
   
     // Create a new place
-    router.post("/",  upload.single('upload'), places.create, (error, req, res, next) => {
-        res.status(400).send({ error: error.message })
-        } );
+    router.post("/",  upload.single('file'), places.create);
   
     // Retrieve all places
     router.get("/", places.findAll);

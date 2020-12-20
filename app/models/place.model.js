@@ -13,6 +13,9 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.BLOB('long')
       }
     });
-  
+   
+    //get rid of metadata
     return Place;
   };
+
+  //associations between tables
