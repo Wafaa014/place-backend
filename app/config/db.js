@@ -1,13 +1,36 @@
+require('dotenv').config();
+
+const config = {
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT),
+  logging: process.env.DB_LOGGING === 'true',
+  benchmark: process.env.DB_BENCHMARK === 'true',
+  dialect: process.env.DB_DIALECT,
+  dialectOptions: {
+    charset: process.env.DB_CHARSET,
+    decimalNumbers: true,
+  },
+  define: {
+    charset: process.env.DB_CHARSET,
+    collate: process.env.DB_COLLATE,
+    timestamps: false,
+    underscored: true
+  },
+};
+
+const prod = Object.assign({}, config);
+
+prod.pool = {
+  max: parseInt(process.env.DB_POOL_MAX),
+  min: parseInt(process.env.DB_POOL_MIN),
+  idle: parseInt(process.env.DB_POOL_IDLE)
+};
+
 module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "Wafaa$88888",
-    DB: "testdb",
-    dialect: "mysql",
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-    }
-  };
+  development: config,
+  local: config,
+  production: prod
+};

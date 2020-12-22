@@ -1,5 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
-    const Place = sequelize.define("place", {
+    const Place = sequelize.define("places", {
+      id: {
+        type: Sequelize.BIGINT,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+      },
       name: {
         type: Sequelize.STRING
       },
@@ -11,9 +17,12 @@ module.exports = (sequelize, Sequelize) => {
       },
       image: {
         type: Sequelize.BLOB('long')
+      },
+      rating: {
+        type: Sequelize.INTEGER,
       }
     });
-   
+
     //get rid of metadata
     return Place;
   };
