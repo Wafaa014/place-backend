@@ -9,11 +9,13 @@ exports.create = async (placedto) => {
 
   let buffer = null
   if (placedto.image) {
-    buffer = await sharp(placedto.image.buffer).resize({width: 250, height: 250}).png().toBuffer()
+    buffer = placedto.image
+    //await sharp(placedto.image.buffer).resize({width: 250, height: 250}).png().toBuffer()
   }
 
   const place = {
     name: placedto.name,
+    // category: placedto.category,
     longitude: placedto.longitude,
     latitude: placedto.latitude,
     image: buffer

@@ -6,6 +6,11 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
+      // category:{
+      //   type: Sequelize.STRING,
+      //   allowNull: false
+
+      // },
       name: {
         type: Sequelize.STRING
       },
@@ -22,9 +27,14 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
       }
     });
+    //  //associations between tables
+    // Place.associate = function (models) {
+    //   Place.belongsTo(models.categories, {as: 'category', foreignKey: 'category_id'});
+    // };
+   
 
     //get rid of metadata
     return Place;
   };
 
-  //associations between tables
+ 

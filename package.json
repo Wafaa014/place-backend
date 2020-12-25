@@ -1,10 +1,10 @@
 {
-  "name": "place-backend",
+  "name": "y",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,8 +15,18 @@
     "express": "^4.17.1",
     "multer": "^1.4.2",
     "mysql2": "^2.2.5",
-    "sequelize": "^5.21.5",
+    "nodemon": "^2.0.6",
+    "sequelize": "^5.22.3",
     "sequelize-cli": "^5.5.1",
     "sharp": "^0.26.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wafaa014/place-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Wafaa014/place-backend/issues"
+  },
+  "homepage": "https://github.com/Wafaa014/place-backend#readme",
+  "description": ""
 }
