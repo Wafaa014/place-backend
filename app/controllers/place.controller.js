@@ -4,11 +4,13 @@ const Op = db.Sequelize.Op;
 const service = require("../services/place.service")
 
 exports.create = async (req, res) => {
+
+  const image_url = process.env.IMAGE_DIR+req.file.originalname
   const place = {
     name: req.body.name,
     longitude: req.body.longitude,
     latitude: req.body.latitude,
-    image: req.file
+    image: image_url
   };
 
   try {
@@ -21,16 +23,13 @@ exports.create = async (req, res) => {
 }
 
 // Retrieve all places from the database.
-// TODO: Fix this
-exports.findAll = (req, res) => {
-  Place.findAll()
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving places."
-      });
-    });
+exports.findAll = async (req, res) => {
+  try {
+    let result = await service.findAll()
+    res.status(200).send(result)
+  }
+  catch (e) {
+    res.status(500).send(e)
+    console.log(e)
+  }
 };
